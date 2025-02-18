@@ -5,7 +5,6 @@ use App\Http\Controllers\RecetteController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategorieController;
-use App\Http\Controllers\QuoteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,9 +38,3 @@ Route::get('/categorie/{id}', [CategorieController::class, 'show']);
 Route::post('/categorie/update/{id}', [CategorieController::class, 'update']);
 Route::post('/categorie/delete/{id}', [CategorieController::class, 'destroy']);
 
-// Quote Controllers
-Route::get('/quotes', [QuoteController::class, 'index']);
-Route::post('/quotes/create', [QuoteController::class, 'store']);
-Route::get('/quote/{id}', [QuoteController::class, 'show']);
-Route::post('/quote/update/{id}', [QuoteController::class, 'update']);
-Route::post('/quote/delete/{id}', [QuoteController::class, 'destroy']);

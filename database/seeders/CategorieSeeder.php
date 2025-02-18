@@ -15,7 +15,11 @@ class CategorieSeeder extends Seeder
     {
         $data = ['salade', 'entree', 'desert'];
         foreach ($data as $entry ) {
-            Categorie::create(['categorie_nom' => $entry]);
+            Categorie::create([
+                'categorie_nom' => $entry,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
         }
     }
 }
