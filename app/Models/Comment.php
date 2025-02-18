@@ -8,6 +8,9 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 
 class Comment extends Model
 {
+
+    protected $fillable = ['prenom', 'nom', 'content'];
+
     use HasFactory;
 
     public function recette() {
