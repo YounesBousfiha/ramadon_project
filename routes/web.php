@@ -18,11 +18,11 @@ Route::post('/recette/update/{id}', [RecetteController::class, 'update']);
 Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy']);
 
 // Post Routes
-Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::post('/posts/create', [PostController::class, 'store']);
 Route::get('/post/{id}', [PostController::class, 'show']);
-Route::post('/post/update/{id}', [PostController::class, 'update']);
-Route::post('/post/delete/{id}', [PostController::class, 'destroy']);
+Route::post('/post/update/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::post('/post/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 // Comments Controllers
 Route::get('/comments', [CommentController::class, 'index']);
