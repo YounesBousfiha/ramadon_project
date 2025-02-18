@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->string('prenom')->nullable(false);
+            $table->string('nom')->nullable(false);
+            $table->text('content')->nullable(false);
             $table->timestamps();
         });
     }
