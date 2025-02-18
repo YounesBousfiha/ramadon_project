@@ -10,6 +10,10 @@ class Categorie extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'categorie_nom'
+    ];
+
 
     public function recette() {
         return $this->hasMany(Recette::class);
