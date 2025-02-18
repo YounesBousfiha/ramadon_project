@@ -45,7 +45,6 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
     }
 
     /**
@@ -67,8 +66,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::findOrfail($id);
+        $post->delete();
+        return redirect()->route('posts.index');
     }
 }
