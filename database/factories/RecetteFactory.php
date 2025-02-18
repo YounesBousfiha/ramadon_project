@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Categorie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,13 @@ class RecetteFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'prenom' => $this->faker->name(),
+            'nom' => $this->faker->name(),
+            'ingredient' => $this->faker->sentence(10),
+            'instruction' => $this->faker->text(),
+            'created_at' => $this->faker->date(),
+            'updated_at' => $this->faker->date(),
+            'categorie_id' => $this->faker->randomElement(Categorie::pluck('id')->toArray())
         ];
     }
 }
