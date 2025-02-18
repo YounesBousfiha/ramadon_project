@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('posts.index', compact('posts'));
     }
 
     /**
@@ -28,7 +29,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|max:255',
+            'prenom' => 'required|max:255',
+            'title' => 'required|max:255',
+            'content' => 'required|max:2000',
+        ]);
+
+        Post::create($request->all());
+        return redirect()->route('posts.index');
     }
 
     /**
