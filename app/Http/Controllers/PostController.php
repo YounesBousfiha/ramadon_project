@@ -43,8 +43,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
     {
+        $post = Post::findOrfail($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -58,9 +60,17 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required|max:2000'
+        ]);
+
+        $post = Post::findOrfail($id);
+        $post->update($request->only(['title', 'content']));
+
+        return redirect()->route('posts.index');
     }
 
     /**
