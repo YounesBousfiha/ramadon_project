@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::query()->paginate(3);
+        // TODO: add Pagination
         return view('posts.index', compact('posts'));
     }
 
@@ -37,7 +39,7 @@ class PostController extends Controller
         ]);
 
         Post::create($request->all());
-        return redirect()->route('posts.index');
+        return to_route('posts.index');
     }
 
     /**
@@ -46,7 +48,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrfail($id);
-        return view('posts.show', compact('post'));
+        $postComments = Comment::where('post_it', $id)->get();
+        return view('posts.show', compact('post', 'postComments'));
     }
 
     /**
