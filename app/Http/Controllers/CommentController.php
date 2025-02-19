@@ -12,7 +12,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $commentaires = Comment::all();
+        return view ('post.show', compact('commentaires'));
     }
 
     /**
@@ -28,7 +29,16 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result = $request->validate([
+            'nom' => 'required|max:255',
+            'prenom' => 'required|max:255',
+            'content' => 'required|max:2000',
+            'post_it' => "required|integer"
+        ]);
+        //dd($request->all());
+        Comment::create($request->all());
+        return back();
+
     }
 
     /**
@@ -50,16 +60,22 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'content' => 'required|max:2000'
+        ]);
+
+        return redirect()->route('posts.show');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        //
+        $comment = Comment::findOrfail($id);
+        $comment->delete();
+        return back();
     }
 }
