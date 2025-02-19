@@ -9,7 +9,7 @@ use Illuminate\Testing\Fluent\Concerns\Has;
 class Comment extends Model
 {
 
-    protected $fillable = ['prenom', 'nom', 'content'];
+    protected $fillable = ['prenom', 'nom', 'content', 'post_it'];
 
     use HasFactory;
 
