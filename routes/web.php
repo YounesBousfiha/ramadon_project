@@ -11,11 +11,11 @@ Route::get('/', function () {
 });
 
 // Recette Routes
-Route::get('/recettes', [RecetteController::class, 'index']);
+Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
 Route::post('/recettes/create', [RecetteController::class, 'store']);
 Route::get('/recette/{id}', [RecetteController::class, 'show']);
 Route::post('/recette/update/{id}', [RecetteController::class, 'update']);
-Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy']);
+Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy'])->name('recette.delete');
 
 // Post Routes
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
