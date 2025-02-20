@@ -27,7 +27,7 @@
                                 <span>Cook: 35 min</span>
                                 <span>Serves: 4 </span>
                             </div>
-                            <a href="recipe/{{ $recette->id }}" class="mt-4 inline-block text-deep-blue hover:text-gold transition-colors">View Recipe</a>
+                            <a href="recette/{{ $recette->id }}" class="mt-4 inline-block text-deep-blue hover:text-gold transition-colors">View Recipe</a>
                         </div>
                     </div>
                 @endforeach
