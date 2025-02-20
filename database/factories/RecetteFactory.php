@@ -22,6 +22,7 @@ class RecetteFactory extends Factory
             'nom' => $this->faker->name(),
             'ingredient' => $this->faker->sentence(10),
             'instruction' => $this->faker->text(),
+            'description' => $this->faker->sentence(15),
             'created_at' => $this->faker->date(),
             'updated_at' => $this->faker->date(),
             'categorie_id' => $this->faker->randomElement(Categorie::pluck('id')->toArray())
