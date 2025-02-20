@@ -38,8 +38,6 @@
     </nav>
 </header>
 
-<main>
-<!-- main Page -->
 @yield('herosection')
 @yield('ramadanEssetials')
 @yield('countdown')
@@ -50,11 +48,8 @@
 @yield('posts')
 
 
-    <div id="post-container" class="bg-white rounded-lg shadow-md p-6 mb-8">
-        @yield('post')
-        @yield('comments')
-    </div>
-</main>
+@yield('post')
+@yield('comments')
 
 <footer class="bg-deep-blue-light mt-20">
     <div class="container mx-auto px-4 py-8">
