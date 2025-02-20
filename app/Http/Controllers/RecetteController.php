@@ -33,7 +33,7 @@ class RecetteController extends Controller
         ]);
 
         Recette::create($request->all());
-        return redirect()->route('recette.index');
+        return redirect()->route('recettes.index');
     }
 
     /**
@@ -42,7 +42,7 @@ class RecetteController extends Controller
     public function show($id)
     {
         $recette = Recette::findOrfail($id);
-        return view('recette.show', compact('recette'));
+        return view('recettes.show', compact('recette'));
     }
 
     /**
@@ -58,7 +58,7 @@ class RecetteController extends Controller
         $recette = Recette::findOrfail($id);
         $recette->update($request->only(['ingredient', 'instruction']));
 
-        return redirect()->route('recette.index');
+        return redirect()->route('recettes.index');
 
     }
 
@@ -69,6 +69,6 @@ class RecetteController extends Controller
     {
         $recette = Recette::findOrfail($id);
         $recette->delete($id);
-        return redirect()->route('recette.index');
+        return redirect()->route('recettes.index');
     }
 }
