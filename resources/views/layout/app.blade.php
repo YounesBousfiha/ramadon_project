@@ -38,12 +38,16 @@
     </nav>
 </header>
 
+@yield('statistiques')
+
+
 @yield('herosection')
 @yield('ramadanEssetials')
 @yield('countdown')
 
 <!-- Recette Page -->
 @yield('recettes')
+@yield('recette')
 <!-- Post Page  -->
 @yield('posts')
 
