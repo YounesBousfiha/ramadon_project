@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('prenom')->nullable(false);
             $table->string('nom')->nullable(false);
+            $table->string('description')->nullable(false);
             $table->text('ingredient')->nullable(false);
             $table->text('instruction')->nullable(false);
             $table->timestamps();
