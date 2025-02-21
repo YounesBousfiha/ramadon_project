@@ -49,6 +49,9 @@
                 <button id="openModal" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">Add Post</button>
                 <div class="flex justify-between py-4">
                     <div class="space-x-4">
+                        <a href="{{ route('recettes.index') }}" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">
+                            All
+                        </a>
                         @foreach($categories as $categorie)
                             <a href="{{ route('recettes.index', ['categorie_id' => $categorie->id]) }}" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">
                                 {{ $categorie->categorie_nom }}
