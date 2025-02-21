@@ -11,9 +11,14 @@ class RecetteController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $req)
     {
-        $recettes = Recette::all();
+        $id = $req->get('categorie_id');
+        if($id) {
+            $recettes = Recette::where('categorie_id', $id)->get();
+        } else {
+            $recettes = Recette::all();
+        }
         $categories = Categorie::all();
         return view('recettes.index', compact('recettes', 'categories'));
     }
@@ -71,5 +76,11 @@ class RecetteController extends Controller
         $recette = Recette::findOrfail($id);
         $recette->delete($id);
         return redirect()->route('recettes.index');
+    }
+
+    public function RecettesByCategorie($id) {
+        $categories = Categorie::all();
+        $recettes = Recette::where('categorie_id', $id);
+        return view('recettes.index', compact('recettes', 'categories'));
     }
 }
