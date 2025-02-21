@@ -16,6 +16,7 @@ Route::get('/recette/{id}', [RecetteController::class, 'show']);
 Route::post('/recette/update/{id}', [RecetteController::class, 'update']);
 Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy'])->name('recette.delete');
 
+
 // Post Routes
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::post('/posts/create', [PostController::class, 'store']);

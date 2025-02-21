@@ -10,6 +10,12 @@
             <div class="flex justify-between">
                 <h1 class="text-3xl font-bold mb-4">{{ $post->title}}</h1>
                 <p class="text-gray-600 mb-4">{{$post->created_at}}</p>
+                <form action="/post/delete/{{ $post->id }}" method="POST" class="inline">
+                    @csrf
+                    <button type="submit" class="text-red-500 hover:text-red-700">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
             </div>
             <div class="prose max-w-none">
                 <p>
