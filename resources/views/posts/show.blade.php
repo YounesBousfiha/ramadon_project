@@ -2,21 +2,28 @@
 
 
 @section('post')
-    @if($post)
-    <h1 class="text-3xl font-bold mb-4">{{ $post->title}}</h1>
-    <p class="text-gray-600 mb-4">{{$post->created_at}}</p>
-    <div class="prose max-w-none">
-        <p>
-            {{ $post->content }}
-        </p>
+    <div class="container mx-auto px-4 py-6 bg-white rounded-lg shadow-md p-6">
+        @if($post)
+            <div>
+                <span>Author: {{ $post->prenom }}  {{ $post->nom }}</span>
+            </div>
+            <div class="flex justify-between">
+                <h1 class="text-3xl font-bold mb-4">{{ $post->title}}</h1>
+                <p class="text-gray-600 mb-4">{{$post->created_at}}</p>
+            </div>
+            <div class="prose max-w-none">
+                <p>
+                    {{ $post->content }}
+                </p>
+            </div>
+        @else
+            <p class="text-xl text-center">Post not found</p>
+        @endif
     </div>
-    @else
-        <p class="text-xl text-center">Post not found</p>
-    @endif
 @endsection
 
 @section('comments')
-    <div id="comments-container" class="bg-white rounded-lg shadow-md p-6">
+    <div id="comments-container" class="bg-white rounded-lg shadow-md p-6 text-black container mx-auto px-4 py-6 ">
         <h2 class="text-2xl font-semibold mb-4">Comments</h2>
         <div id="comments-list">
             @if($postComments->isEmpty())
@@ -24,17 +31,25 @@
             @else
                 @foreach($postComments as $comment)
                     <div class="bg-gray-100 p-4 rounded-md mb-4">
-                        <div class="flex justify-between items-center mb-2">
-                            <strong class="text-deep-blue">{{ $comment->name }}</strong>
-                            <span class="text-sm text-gray-500">{{ $comment->created_at }}</span>
-                            <form action="{{ route('comment.delete', ['id' => $comment->id]) }}" method="POST" class="inline">
-                                @csrf
-                                <button type="submit" class="text-red-500 hover:text-red-700">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
+                        <div>
+                            <div>
+                                <strong class="text-deep-blue">{{ $comment->name }}</strong>
+                            </div>
+                            <div class="flex  justify-between">
+                                <span class="text-sm text-gray-500">{{ $comment->created_at }}</span>
+                                <form action="{{ route('comment.delete', ['id' => $comment->id]) }}" method="POST" class="inline">
+                                    @csrf
+                                    <button type="submit" class="text-red-500 hover:text-red-700">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
-                        <p>{{$comment->content}}</p>
+                        <div>
+                            <p>{{$comment->content}}</p>
+                        </div>
+                    </div>
+
                     </div>
                 @endforeach
             @endif
