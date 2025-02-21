@@ -27,9 +27,10 @@ class RecetteController extends Controller
         $request->validate([
             'prenom' => 'required|string|max:255',
             'nom' => 'required|string|max:255',
+            'description' => 'required|string|max:500',
             'ingredient' => 'required|string|max:255',
             'instruction' => 'required|string|max:2000',
-            'categorie_id' => 'required|number'
+            'categorie_id' => 'required'
         ]);
 
         Recette::create($request->all());
