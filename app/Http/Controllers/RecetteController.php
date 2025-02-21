@@ -77,10 +77,4 @@ class RecetteController extends Controller
         $recette->delete($id);
         return redirect()->route('recettes.index');
     }
-
-    public function RecettesByCategorie($id) {
-        $categories = Categorie::all();
-        $recettes = Recette::where('categorie_id', $id);
-        return view('recettes.index', compact('recettes', 'categories'));
-    }
 }
