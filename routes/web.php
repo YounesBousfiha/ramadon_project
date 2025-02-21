@@ -1,18 +1,17 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecetteController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategorieController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
 // Recette Routes
 Route::get('/recettes', [RecetteController::class, 'index'])->name('recettes.index');
-Route::post('/recettes/create', [RecetteController::class, 'store']);
+Route::post('/recettes/create', [RecetteController::class, 'store'])->name('recettes.create');
 Route::get('/recette/{id}', [RecetteController::class, 'show']);
 Route::post('/recette/update/{id}', [RecetteController::class, 'update']);
 Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy'])->name('recette.delete');
