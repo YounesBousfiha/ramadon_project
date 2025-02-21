@@ -19,7 +19,7 @@ Route::post('/recette/delete/{id}', [RecetteController::class, 'destroy'])->name
 
 // Post Routes
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::post('/posts/create', [PostController::class, 'store']);
+Route::post('/posts/create', [PostController::class, 'store'])->name('posts.create');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::post('/post/update/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::post('/post/delete/{id}', [PostController::class, 'destroy'])->name('posts.destroy');

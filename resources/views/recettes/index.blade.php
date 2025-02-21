@@ -46,14 +46,8 @@
 
             <main class="container mx-auto px-4 py-8">
                 <h1 class="text-3xl font-bold mb-8 text-center text-white">Ramadan Recipes</h1>
+                <button id="openModal" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">Add Post</button>
                 <div class="flex justify-between py-4">
-                    <button id="openModal" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">Add Recipe</button>
-                    {{--<select>
-                        <option value="0">All</option>
-                        @foreach($categories as $categorie)
-                            <option value="{{ $categorie->id }}">{{ $categorie->categorie_nom }}</option>
-                        @endforeach
-                    </select>--}}
                     <div class="space-x-4">
                         @foreach($categories as $categorie)
                             <a href="{{ route('recettes.index', ['categorie_id' => $categorie->id]) }}" class="bg-white px-4 py-2 rounded-md hover:bg-opacity-90 transition-colors inline-block">
